@@ -43,11 +43,15 @@ Server_CardZone::~Server_CardZone()
 
 void Server_CardZone::shuffle()
 {
+	const int SHUFFLE_COUNT = 15;
     // Size 0 or 1 decks are sorted
     if (cards.size() < 2) return;
-    for (int i = cards.size() - 1; i > 0; i--){
-        int j = rng->rand(0, i);
-        cards.swap(j,i);
+    for(int i = 0; i < SHUFFLE_COUNT; i++)
+    {
+    	for (int i = cards.size() - 1; i > 0; i--){
+    	        int j = rng->rand(0, i);
+    	        cards.swap(j,i);
+    	    }
     }
     playersWithWritePermission.clear();
 }
